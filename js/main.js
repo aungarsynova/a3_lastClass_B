@@ -1,16 +1,21 @@
 (()=> {
     //create a component BEFORE the vue instance
-    Vue.component('poster',{
+    let posterComponent = {
         props: ['video'],
+        template:"#postertemplate"
 
-        template: `<li>
-        <button :data-movie="video.id" class="more-details">More Details...</button>
-        <a a :href="video.vid_path">
-            <img :src="'images/' + video.vid_thumb" alt="">
-        </a>
-        <p>put genre data here</p> 
-    </li>`
-    });
+    };
+    // Vue.component('poster',{
+    //     props: ['video'],
+
+    //     template: `<li>
+    //     <button :data-movie="video.id" class="more-details">More Details...</button>
+    //     <a a :href="video.vid_path">
+    //         <img :src="'images/' + video.vid_thumb" alt="">
+    //     </a>
+    //     <p>put genre data here</p> 
+    // </li>`
+    // });
 
     const vm = new Vue({
         el: '#app',
@@ -78,6 +83,10 @@
                     console.log(error);
                 });
             }
+        },
+
+        components: {
+            'poster': posterComponent
         }
     });
 })();
